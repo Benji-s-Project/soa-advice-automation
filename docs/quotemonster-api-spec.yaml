@@ -1,0 +1,7 @@
+openapi: 3.0.1
+info:
+  title: QuoteMonster Web API V3
+  description: Please contact QM Team to get more detail.
+  termsOfService: https://quotemonster.co.nz/TermsOfUse.html
+  version: v4
+# Full spec saved for reference - see project notes for key endpoints

@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statement of Advice — Sarah & James Mitchell</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #1e293b;
+            background: #fff;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+        }
+
+        /* ── Cover Page ── */
+        .cover {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0c1929 0%, #162544 40%, #1e3a5f 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(56, 152, 236, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cover::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #60a5fa;
+            margin-bottom: 80px;
+        }
+
+        .cover-logo .logo-icon {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            line-height: 48px;
+            font-size: 1.4rem;
+        }
+
+        .cover h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .cover .cover-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .cover-meta-item .meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #475569;
+            z-index: 1;
+        }
+
+        /* ── Page Layout ── */
+        .page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* ── Header Bar ── */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 40px;
+        }
+
+        .page-header .header-logo {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .page-header .header-doc {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* ── Section Headers ── */
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #475569;
+            margin-bottom: 14px;
+            line-height: 1.8;
+        }
+
+        /* ── Client Info Card ── */
+        .client-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .client-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .client-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-field .field-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .client-field .field-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* ── Existing Cover Table ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 12px 16px;
+            background: #0f172a;
+            color: white;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        thead th:first-child { border-radius: 10px 0 0 0; }
+        thead th:last-child { border-radius: 0 10px 0 0; }
+
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #475569;
+        }
+
+        tbody tr:hover { background: #f8fafc; }
+        tbody td:first-child { font-weight: 600; color: #1e293b; }
+
+        /* ── Recommendation Cards ── */
+        .rec-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            margin: 16px 0;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .rec-card.highlight {
+            border-left-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .rec-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .rec-type {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #3b82f6;
+        }
+
+        .rec-premium {
+            text-align: right;
+        }
+
+        .rec-premium .amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .rec-premium .freq {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .rec-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .rec-provider {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .rec-rationale {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.7;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .rec-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .rec-detail {
+            text-align: center;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .rec-detail .detail-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .rec-detail .detail-label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 2px;
+        }
+
+        /* ── Comparison Box ── */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 24px 0;
+        }
+
+        .comp-side {
+            padding: 24px;
+            border-radius: 14px;
+        }
+
+        .comp-side.old {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .comp-side.new {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .comp-side .comp-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .comp-side.old .comp-label { color: #dc2626; }
+        .comp-side.new .comp-label { color: #16a34a; }
+
+        .comp-side .comp-provider {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .comp-side .comp-premium {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .comp-arrow {
+            font-size: 1.5rem;
+            color: #94a3b8;
+        }
+
+        /* ── Quote Monster Research ── */
+        .qm-table {
+            margin: 20px 0;
+        }
+
+        .qm-table thead th {
+            background: #1e3a5f;
+        }
+
+        .qm-table .qm-selected {
+            background: #eff6ff;
+            font-weight: 600;
+        }
+
+        .qm-table .qm-selected td {
+            color: #1e293b;
+        }
+
+        .qm-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .qm-badge.recommended {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .qm-badge.rating-high {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        /* ── Summary Box ── */
+        .summary-box {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin: 32px 0;
+        }
+
+        .summary-box h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .summary-item .sum-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .summary-item .sum-value.green { color: #34d399; }
+        .summary-item .sum-value.blue { color: #60a5fa; }
+        .summary-item .sum-value.amber { color: #fbbf24; }
+
+        .summary-item .sum-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* ── Disclosure ── */
+        .disclosure {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 20px 0;
+        }
+
+        .disclosure h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .disclosure p, .disclosure li {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .disclosure ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        /* ── Approval Section ── */
+        .approval-section {
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            background: #eff6ff;
+        }
+
+        .approval-section h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+
+        .sig-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 28px;
+        }
+
+        .sig-block {
+            border-top: 2px solid #1e293b;
+            padding-top: 12px;
+        }
+
+        .sig-block .sig-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .sig-block .sig-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* ── Page Footer ── */
+        .page-footer {
+            margin-top: 60px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #94a3b8;
+        }
+
+        /* ── Callout ── */
+        .callout {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 0.88rem;
+            color: #92400e;
+        }
+
+        .callout strong { color: #78350f; }
+
+        /* ── Print ── */
+        @media print {
+            body { font-size: 11pt; }
+            .cover { min-height: 100vh; }
+            .page { padding: 40px 50px; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════ COVER PAGE ═══════════════════════ -->
+    <div class="cover">
+        <div class="cover-content">
+            <div class="cover-logo">
+                <div class="logo-icon">M</div><br>
+                Matt Lewer Financial Services
+            </div>
+
+            <h1>Statement of Advice</h1>
+            <div class="cover-subtitle">Prepared for Sarah &amp; James Mitchell</div>
+
+            <div class="cover-meta">
+                <div class="cover-meta-item">
+                    <div class="meta-label">Date Prepared</div>
+                    <div class="meta-value">19 March 2026</div>
+                </div>
+                <div class="cover-meta-item">
+                    <div class="meta-label">Adviser</div>
+                    <div class="meta-value">Matt Lewer</div>
+                </div>
+                <div class="cover-meta-item">
+                    <div class="meta-label">Reference</div>
+                    <div class="meta-value">SOA-2026-0342</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            Confidential &mdash; Prepared for the sole use of Sarah &amp; James Mitchell. This document should not be distributed to any third party.
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 1: SCOPE & CLIENT ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h2><span class="section-number">1</span> Nature &amp; Scope of Advice</h2>
+        <p>This Statement of Advice (SOA) has been prepared following our meeting on 17 March 2026, where we discussed your current insurance arrangements and identified areas where your cover may no longer be adequate for your circumstances.</p>
+        <p>This advice covers a <strong>full review of your personal risk insurance</strong> including life cover, trauma/critical illness, income protection, and health insurance for both Sarah and James. This advice does not extend to KiwiSaver, investment, or mortgage-related recommendations.</p>
+        <p>In preparing this advice, I have relied on the information you provided during our meeting and the details recorded in your fact find. If any of this information is incorrect or has changed, please let me know as it may affect the suitability of this advice.</p>
+
+        <h2><span class="section-number">2</span> Client Summary</h2>
+
+        <div class="client-card">
+            <h3 style="margin-top: 0;">Sarah Mitchell</h3>
+            <div class="client-grid">
+                <div class="client-field">
+                    <span class="field-label">Date of Birth</span>
+                    <span class="field-value">14 July 1988 (Age 37)</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Occupation</span>
+                    <span class="field-value">Marketing Manager — Permanent</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Annual Income</span>
+                    <span class="field-value">$92,000</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Smoker Status</span>
+                    <span class="field-value">Non-smoker</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-card">
+            <h3 style="margin-top: 0;">James Mitchell</h3>
+            <div class="client-grid">
+                <div class="client-field">
+                    <span class="field-label">Date of Birth</span>
+                    <span class="field-value">3 February 1986 (Age 40)</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Occupation</span>
+                    <span class="field-value">Electrician — Self-Employed</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Annual Income</span>
+                    <span class="field-value">$115,000</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Smoker Status</span>
+                    <span class="field-value">Non-smoker</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-card" style="background: #eff6ff; border-color: #bfdbfe;">
+            <h3 style="margin-top: 0; color: #1e40af;">Household Summary</h3>
+            <div class="client-grid">
+                <div class="client-field">
+                    <span class="field-label">Dependents</span>
+                    <span class="field-value">2 children — Mia (5) &amp; Liam (3)</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Mortgage</span>
+                    <span class="field-value">$620,000 — ASB (27 yrs remaining)</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Monthly Expenses</span>
+                    <span class="field-value">$6,800 (incl. mortgage)</span>
+                </div>
+                <div class="client-field">
+                    <span class="field-label">Emergency Fund</span>
+                    <span class="field-value">$18,000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 1</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 2: EXISTING COVER ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h2><span class="section-number">3</span> Your Existing Insurance</h2>
+        <p>Below is a summary of the policies currently in place for you and James. These details have been verified against your current policy schedules.</p>
+
+        <h3>Sarah Mitchell — Existing Cover</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cover Type</th>
+                    <th>Provider</th>
+                    <th>Cover Amount</th>
+                    <th>Premium</th>
+                    <th>Started</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Life Cover</td>
+                    <td>Sovereign (now AIA)</td>
+                    <td>$250,000</td>
+                    <td>$32.40/mo</td>
+                    <td>Mar 2018</td>
+                </tr>
+                <tr>
+                    <td>Trauma</td>
+                    <td>Sovereign (now AIA)</td>
+                    <td>$50,000</td>
+                    <td>$28.90/mo</td>
+                    <td>Mar 2018</td>
+                </tr>
+                <tr>
+                    <td>Income Protection</td>
+                    <td>—</td>
+                    <td colspan="3"><em>No cover in place</em></td>
+                </tr>
+                <tr>
+                    <td>Health Insurance</td>
+                    <td>Southern Cross</td>
+                    <td>Wellbeing One</td>
+                    <td>$68.50/mo</td>
+                    <td>Jun 2020</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>James Mitchell — Existing Cover</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cover Type</th>
+                    <th>Provider</th>
+                    <th>Cover Amount</th>
+                    <th>Premium</th>
+                    <th>Started</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Life Cover</td>
+                    <td>Sovereign (now AIA)</td>
+                    <td>$300,000</td>
+                    <td>$38.60/mo</td>
+                    <td>Mar 2018</td>
+                </tr>
+                <tr>
+                    <td>Trauma</td>
+                    <td>—</td>
+                    <td colspan="3"><em>No cover in place</em></td>
+                </tr>
+                <tr>
+                    <td>Income Protection</td>
+                    <td>Sovereign (now AIA)</td>
+                    <td>$4,000/mo — 2yr benefit</td>
+                    <td>$72.30/mo</td>
+                    <td>Mar 2018</td>
+                </tr>
+                <tr>
+                    <td>Health Insurance</td>
+                    <td>Southern Cross</td>
+                    <td>Wellbeing One</td>
+                    <td>$82.10/mo</td>
+                    <td>Jun 2020</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>Key concerns identified:</strong> Sarah's life cover of $250,000 is significantly below what's needed to cover the mortgage ($620k) and maintain the household. She has no income protection. James's trauma cover is missing entirely, and his income protection benefit period of 2 years is insufficient for a self-employed tradesman. Both life cover amounts are well below recommended levels given your mortgage and dependents.
+        </div>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 2</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 3: RECOMMENDATIONS ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h2><span class="section-number">4</span> Recommendations</h2>
+        <p>Based on your situation, goals, and budget, I recommend replacing your existing Sovereign/AIA policies with a comprehensive package through <strong>Partners Life</strong>. The rationale for switching providers and the details of each recommendation are outlined below.</p>
+
+        <h3>Why Partners Life?</h3>
+        <div class="comparison-box">
+            <div class="comp-side old">
+                <div class="comp-label">Current — AIA (Sovereign)</div>
+                <div class="comp-provider">Gaps in cover, outdated levels</div>
+                <div class="comp-premium">Total: $172.20/mo</div>
+            </div>
+            <div class="comp-arrow">&rarr;</div>
+            <div class="comp-side new">
+                <div class="comp-label">Recommended — Partners Life</div>
+                <div class="comp-provider">Full cover, modern benefits</div>
+                <div class="comp-premium">Total: $298.40/mo</div>
+            </div>
+        </div>
+
+        <p>Partners Life offers the strongest combination of premium competitiveness, policy features, and claims reputation for your specific needs. Their income protection for self-employed clients is the best in market, which is critical for James. Full comparison data from Quote Monster is on page 5.</p>
+
+        <!-- Sarah's Recommendations -->
+        <h3>Sarah Mitchell — Recommended Cover</h3>
+
+        <div class="rec-card">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type">Life Cover</div>
+                    <div class="rec-title">Partners Life — Life Cover</div>
+                    <div class="rec-provider">Level premiums to age 65</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$48.20</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$650,000</div>
+                    <div class="detail-label">Cover Amount</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">To age 65</div>
+                    <div class="detail-label">Benefit Period</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Level</div>
+                    <div class="detail-label">Premium Type</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> Increased from $250,000 to $650,000 to cover the full mortgage ($620k), plus a buffer for funeral costs and immediate family expenses. With two young children and a mortgage, this level ensures James and the kids aren't financially impacted if the worst happens.
+            </div>
+        </div>
+
+        <div class="rec-card">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type">Trauma / Critical Illness</div>
+                    <div class="rec-title">Partners Life — Trauma Cover</div>
+                    <div class="rec-provider">Standalone — Level premiums to age 65</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$42.80</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$150,000</div>
+                    <div class="detail-label">Cover Amount</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Standalone</div>
+                    <div class="detail-label">Type</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Level</div>
+                    <div class="detail-label">Premium Type</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> Increased from $50,000 to $150,000. Trauma cover provides a lump sum on diagnosis of a critical illness (cancer, heart attack, stroke). At $150k this covers 12-18 months of mortgage payments and living expenses while Sarah recovers, without needing to draw on the emergency fund or go into debt.
+            </div>
+        </div>
+
+        <div class="rec-card highlight">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type" style="color: #16a34a;">Income Protection — NEW</div>
+                    <div class="rec-title">Partners Life — Income Protection</div>
+                    <div class="rec-provider">75% of income — To age 65 benefit period</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$38.90</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$5,750/mo</div>
+                    <div class="detail-label">Monthly Benefit</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">8 weeks</div>
+                    <div class="detail-label">Wait Period</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">To age 65</div>
+                    <div class="detail-label">Benefit Period</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> Sarah currently has <strong>no income protection</strong>. As a two-income household with a $620k mortgage, losing Sarah's $92k salary due to illness or injury would put the household under significant financial strain. This policy replaces 75% of her income for the duration of any disability through to age 65.
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 3</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 4: JAMES RECOMMENDATIONS ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h3>James Mitchell — Recommended Cover</h3>
+
+        <div class="rec-card">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type">Life Cover</div>
+                    <div class="rec-title">Partners Life — Life Cover</div>
+                    <div class="rec-provider">Level premiums to age 65</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$56.40</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$750,000</div>
+                    <div class="detail-label">Cover Amount</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">To age 65</div>
+                    <div class="detail-label">Benefit Period</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Level</div>
+                    <div class="detail-label">Premium Type</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> Increased from $300,000 to $750,000. As the higher earner and self-employed, James's cover needs to be higher. This amount clears the mortgage ($620k) plus provides ~$130k buffer for Sarah to manage the transition — cover childcare, reduce work hours, or take time off.
+            </div>
+        </div>
+
+        <div class="rec-card highlight">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type" style="color: #16a34a;">Trauma / Critical Illness — NEW</div>
+                    <div class="rec-title">Partners Life — Trauma Cover</div>
+                    <div class="rec-provider">Standalone — Level premiums to age 65</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$52.60</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$200,000</div>
+                    <div class="detail-label">Cover Amount</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Standalone</div>
+                    <div class="detail-label">Type</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">Level</div>
+                    <div class="detail-label">Premium Type</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> James currently has <strong>no trauma cover</strong>. As a self-employed electrician, a serious diagnosis could mean months off work plus significant treatment costs. The $200k lump sum covers mortgage payments during recovery, medical costs not covered by health insurance, and business continuity expenses.
+            </div>
+        </div>
+
+        <div class="rec-card">
+            <div class="rec-header">
+                <div>
+                    <div class="rec-type">Income Protection — UPGRADED</div>
+                    <div class="rec-title">Partners Life — Income Protection</div>
+                    <div class="rec-provider">75% of income — To age 65 benefit period</div>
+                </div>
+                <div class="rec-premium">
+                    <div class="amount">$59.50</div>
+                    <div class="freq">per month</div>
+                </div>
+            </div>
+            <div class="rec-details">
+                <div class="rec-detail">
+                    <div class="detail-value">$7,185/mo</div>
+                    <div class="detail-label">Monthly Benefit</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">4 weeks</div>
+                    <div class="detail-label">Wait Period</div>
+                </div>
+                <div class="rec-detail">
+                    <div class="detail-value">To age 65</div>
+                    <div class="detail-label">Benefit Period</div>
+                </div>
+            </div>
+            <div class="rec-rationale" style="margin-top: 16px;">
+                <strong>Rationale:</strong> Upgraded from $4,000/mo (2-year benefit) to $7,185/mo (to age 65). The old 2-year benefit period was the biggest risk in James's cover — if he had a serious injury on the job, benefits would stop after 2 years while he might still be unable to work. The new policy pays to age 65. Wait period reduced to 4 weeks given he's self-employed with no sick leave entitlement.
+            </div>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="summary-box">
+            <h3>Premium Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="sum-value green">$298.40</div>
+                    <div class="sum-label">New Monthly Total</div>
+                </div>
+                <div class="summary-item">
+                    <div class="sum-value blue">$172.20</div>
+                    <div class="sum-label">Current Monthly Total</div>
+                </div>
+                <div class="summary-item">
+                    <div class="sum-value amber">+$126.20</div>
+                    <div class="sum-label">Monthly Increase</div>
+                </div>
+                <div class="summary-item">
+                    <div class="sum-value green">+$1.3M</div>
+                    <div class="sum-label">Additional Cover</div>
+                </div>
+            </div>
+        </div>
+
+        <p>The increase of $126.20 per month reflects a <strong>significant uplift in cover</strong> — filling the gaps in income protection and trauma, increasing life cover to appropriate levels, and extending James's income protection from 2 years to age 65. The current premiums were low because the cover was inadequate.</p>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 4</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 5: RESEARCH & COMPARISON ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h2><span class="section-number">5</span> Supporting Research</h2>
+        <p>The following comparison data was obtained from Quote Monster to support the product recommendations in this advice. Premiums shown are indicative and subject to underwriting.</p>
+
+        <h3>Life Cover Comparison — James Mitchell ($750,000, Level to 65)</h3>
+        <table class="qm-table">
+            <thead>
+                <tr>
+                    <th>Provider</th>
+                    <th>Monthly Premium</th>
+                    <th>QPR Rating</th>
+                    <th>Key Feature</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="qm-selected">
+                    <td>Partners Life</td>
+                    <td>$56.40</td>
+                    <td><span class="qm-badge rating-high">Above Avg</span></td>
+                    <td>Terminal illness advance, funeral benefit incl.</td>
+                    <td><span class="qm-badge recommended">Recommended</span></td>
+                </tr>
+                <tr>
+                    <td>AIA</td>
+                    <td>$61.20</td>
+                    <td><span class="qm-badge rating-high">Above Avg</span></td>
+                    <td>Financial planning benefit, grief support</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Chubb</td>
+                    <td>$58.80</td>
+                    <td><span class="qm-badge rating-high">Average</span></td>
+                    <td>Conversion privilege, premium holiday</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fidelity Life</td>
+                    <td>$63.50</td>
+                    <td><span class="qm-badge rating-high">Average</span></td>
+                    <td>NZ owned, loyalty discounts</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>nib</td>
+                    <td>$59.90</td>
+                    <td><span class="qm-badge rating-high">Above Avg</span></td>
+                    <td>Simple underwriting, fast claims</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Income Protection Comparison — James Mitchell ($7,185/mo, 4wk wait, to 65)</h3>
+        <table class="qm-table">
+            <thead>
+                <tr>
+                    <th>Provider</th>
+                    <th>Monthly Premium</th>
+                    <th>QPR Rating</th>
+                    <th>Key Feature</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="qm-selected">
+                    <td>Partners Life</td>
+                    <td>$59.50</td>
+                    <td><span class="qm-badge rating-high">Above Avg</span></td>
+                    <td>Best self-employed definition, partial disability</td>
+                    <td><span class="qm-badge recommended">Recommended</span></td>
+                </tr>
+                <tr>
+                    <td>AIA</td>
+                    <td>$67.30</td>
+                    <td><span class="qm-badge rating-high">Above Avg</span></td>
+                    <td>Rehabilitation benefit, worldwide cover</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Chubb</td>
+                    <td>$71.40</td>
+                    <td><span class="qm-badge rating-high">Average</span></td>
+                    <td>Agreed value available</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fidelity Life</td>
+                    <td>$64.20</td>
+                    <td><span class="qm-badge rating-high">Average</span></td>
+                    <td>NZ based claims team</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Why Partners Life for income protection:</strong> Partners Life has the strongest "own occupation" definition for self-employed clients in the NZ market. This means James is covered if he can't work as an electrician specifically — not just if he can't work at all. This distinction matters enormously for tradespeople.</p>
+
+        <h2><span class="section-number">6</span> Replacement Analysis</h2>
+        <p>I am recommending you replace your existing AIA (formerly Sovereign) policies taken out in March 2018. Before making this change, it's important you understand the implications:</p>
+
+        <div class="callout">
+            <strong>Important:</strong> Do not cancel your existing AIA policies until your new Partners Life policies have been formally accepted and are in force. There may be a period during underwriting where you need both policies active.
+        </div>
+
+        <h3>Key Differences</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>AIA (Current)</th>
+                    <th>Partners Life (New)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Policy tenure</td>
+                    <td>8 years — established</td>
+                    <td>New policy — new underwriting</td>
+                </tr>
+                <tr>
+                    <td>Pre-existing conditions</td>
+                    <td>Covered (past stand-down)</td>
+                    <td>Subject to new assessment</td>
+                </tr>
+                <tr>
+                    <td>Trauma cover breadth</td>
+                    <td>42 conditions</td>
+                    <td>46 conditions + severity tiers</td>
+                </tr>
+                <tr>
+                    <td>IP — Own occupation</td>
+                    <td>2 years, then "any" occ.</td>
+                    <td>Own occupation to age 65</td>
+                </tr>
+                <tr>
+                    <td>Claims reputation</td>
+                    <td>Strong</td>
+                    <td>Strong — 97.2% acceptance rate</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The primary risk of replacement is that any health conditions developed since 2018 may be excluded under the new policy. We discussed this in our meeting and you confirmed no significant health changes for either of you since the existing policies were taken out.</p>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 5</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ PAGE 6: DISCLOSURES & APPROVAL ═══════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="header-logo">Matt Lewer Financial Services</div>
+            <div class="header-doc">SOA-2026-0342 &mdash; Mitchell</div>
+        </div>
+
+        <h2><span class="section-number">7</span> Risks &amp; Limitations</h2>
+        <ul style="padding-left: 20px; color: #475569; margin-bottom: 20px;">
+            <li style="margin-bottom: 8px;">All recommended covers are subject to underwriting by Partners Life. Premiums may vary, and exclusions may be applied based on medical or lifestyle disclosures.</li>
+            <li style="margin-bottom: 8px;">Stand-down periods apply to trauma cover — typically 90 days from policy commencement for cancer-related conditions.</li>
+            <li style="margin-bottom: 8px;">Income protection has a 4-week (James) and 8-week (Sarah) waiting period before benefits commence.</li>
+            <li style="margin-bottom: 8px;">Level premiums are guaranteed not to increase due to age but may be adjusted by the insurer due to portfolio-wide changes.</li>
+            <li style="margin-bottom: 8px;">Health insurance through Southern Cross has been reviewed and is adequate — no changes recommended at this time.</li>
+        </ul>
+
+        <h2><span class="section-number">8</span> Fee &amp; Commission Disclosure</h2>
+
+        <div class="disclosure">
+            <h4>Adviser Remuneration — Partners Life</h4>
+            <p>I receive the following remuneration from Partners Life in relation to this advice:</p>
+            <ul>
+                <li><strong>Initial commission:</strong> Up to 200% of the first year's annual premium (paid by Partners Life, not by you)</li>
+                <li><strong>Renewal commission:</strong> Up to 7.5% of the annual premium each year the policy remains in force</li>
+                <li><strong>Clawback period:</strong> If you cancel within 24 months, a portion of the initial commission is returned to Partners Life by the adviser</li>
+            </ul>
+            <p style="margin-top: 12px;">No fees are charged to you directly. The premiums quoted include all costs — there are no additional charges beyond what is shown in this document.</p>
+        </div>
+
+        <div class="disclosure">
+            <h4>Adviser Details</h4>
+            <p><strong>Matt Lewer</strong> — Financial Adviser<br>
+            FSP Number: XXXXXX<br>
+            Matt Lewer Financial Services Ltd<br>
+            Authorised Financial Adviser under the Financial Markets Conduct Act 2013</p>
+            <p><strong>Complaints:</strong> If you are not satisfied with the advice or service provided, please contact me directly in the first instance. If the matter is not resolved, you may refer your complaint to Financial Services Complaints Ltd (FSCL) — <em>an approved independent dispute resolution scheme</em>.</p>
+        </div>
+
+        <h2><span class="section-number">9</span> Client Approval</h2>
+
+        <div class="approval-section">
+            <h3>Declaration &amp; Consent</h3>
+            <p style="color: #1e40af; font-size: 0.9rem;">I/We have read and understood this Statement of Advice. I/We confirm that the personal information used to prepare this advice is accurate, and I/we wish to proceed with the recommendations outlined in this document.</p>
+
+            <div class="sig-grid">
+                <div>
+                    <div class="sig-block">
+                        <div class="sig-label">Client Signature</div>
+                        <div class="sig-name">Sarah Mitchell</div>
+                        <div class="sig-label" style="margin-top: 12px;">Date: _______________</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sig-block">
+                        <div class="sig-label">Client Signature</div>
+                        <div class="sig-name">James Mitchell</div>
+                        <div class="sig-label" style="margin-top: 12px;">Date: _______________</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sig-block">
+                        <div class="sig-label">Adviser Signature</div>
+                        <div class="sig-name">Matt Lewer</div>
+                        <div class="sig-label" style="margin-top: 12px;">Date: _______________</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sig-block">
+                        <div class="sig-label">Presented to Client</div>
+                        <div class="sig-name">19 March 2026</div>
+                        <div class="sig-label" style="margin-top: 12px;">Method: Email</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Statement of Advice — Sarah &amp; James Mitchell</span>
+            <span>Page 6</span>
+        </div>
+    </div>
+
+</body>
+</html>

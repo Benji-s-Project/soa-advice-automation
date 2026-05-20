@@ -1,0 +1,21 @@
+{
+  "name": "mats-soa-advice-automation",
+  "version": "1.0.0",
+  "description": "### Generate compliance-ready Statements of Advice in under 60 seconds",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "open": "^11.0.0"
+  }
+}
